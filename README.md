@@ -1,4 +1,6 @@
 # 3ttech.cn electron windows SDK demo
+[3ttech electron windows SDKs](https://github.com/santiyun/electron-win-sdk)
+
 ## Build and install
 <pre><code>
 #step 1: build electron SDK
