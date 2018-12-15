@@ -1,14 +1,19 @@
 'use strict'
 
 const $ = require('jquery');
-const {dialog} = require('electron')
-const path = require("path");
-const addon_path = path.join(__dirname, "../../3ttechsdk/build/Release/3TtechSDK");
-const make_stream = require('../../3ttechsdk/3tstream');
-const videoDisplay = require('../../3ttechsdk/videoDisplay');
-const tttechnode = require(addon_path);
+const {dialog} = require('electron');
 
+const path = require("path");
+// The 3techSDK addons path
+const addon_path = path.join(__dirname, "../../3ttechsdk/build/Release/3TtechSDK");
+// the make_stream in the SDKs folder.
+const make_stream = require('../../3ttechsdk/3tstream');
+// the tttechnode are 3tech addon
+const tttechnode = require(addon_path);
+// The varible for received data from 3tech SDKs.
 const tttdata = make_stream(tttechnode, { name: "Head Mounted Display" });
+
+const videoDisplay = require('../../3ttechsdk/videoDisplay');
 const displayImage = new videoDisplay();
 let uids = new Map();
 
@@ -17,6 +22,7 @@ function init() {
     console.log("test interface return value = ", res);
 }
 
+// receive stream data(some event and stream-video-audio data) from 3ttech.
 function streamData() {
     tttdata.from.on('sum', (sample) => {
         let d = JSON.parse(sample);
