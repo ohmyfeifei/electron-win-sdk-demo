@@ -40,7 +40,7 @@ const tttdata = make_stream(tttechnode, { name: "Head Mounted Display" });
 // like this line.
 let res = tttechnode.initialize(appkey);
 
-// receive stream data(some event and stream-video-audio data) from 3ttech.
+// receive stream data(some events and stream-video-audio data) from 3ttech.
 tttdata.from.on('sum', (sample) => {
     let data = JSON.parse(sample);
     switch (data.callbackname) {
