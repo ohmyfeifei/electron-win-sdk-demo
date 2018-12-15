@@ -17,7 +17,7 @@ const videoDisplay = require('../../3ttechsdk/videoDisplay');
 const displayImage = new videoDisplay();
 let uids = new Map();
 
-function init() {
+function initialize() {
     let res = tttechnode.initialize("a967ac491e3acf92eed5e1b5ba641ab7");
     console.log("test interface return value = ", res);
 }
@@ -29,8 +29,6 @@ function streamData() {
         // console.log(d);
         switch (d.callbackname) {
             case 'OnUserH264Push':
-                // let dh264 = base64.decode(sample.data);
-                // appendToBuffer(dh264);
                 break;
             case 'onRemoteVideoDecoded':
                 break;
@@ -66,7 +64,9 @@ function joinRoom() {
     let url = new URL(window.location.href);
     const chanid = url.searchParams.get('chanid');
 
-    init();
+    // initilation windows SDKs (addon).
+    initialize();
+
     // start recive the stream data from node addins
     streamData();
 
@@ -75,7 +75,7 @@ function joinRoom() {
 
     if(chanid === '' || chanid === 'undefined') {
         return;
-    } 
+    }
 
     let res = tttechnode.setChannelProfile(1);
     console.log("setChannelProfile res = ", res);
@@ -100,6 +100,9 @@ function joinRoom() {
 
 const test_info_area = $('#info');
 
+/**
+ * Bind events for room page and response for tests.
+ */
 function bindEvents() {
     $('#start_screen_share_bt').bind('click', () => {
         tttechnode.startScreenCapture(0, 0, 500, 500);
