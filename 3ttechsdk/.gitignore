@@ -1,0 +1,8 @@
+#windows SDK forlder
+bin
+build
+builds
+build/Release
+node_modules
+.svn
+!.gitignore

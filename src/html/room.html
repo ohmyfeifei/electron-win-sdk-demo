@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>三体云联麦直播DEMO</title>
+</head>
+<style>
+    .div_css {
+        margin-top: 1em;
+        margin-bottom: 2em;
+        text-align: center;
+    }
+
+    #div_info {
+        text-align: left;
+        display: block;
+        position: relative;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        padding: 5px;
+    }
+
+    .grid-item {
+        background-color: black;
+        border: 1px solid rgba(100, 100, 100, 0.8);
+        padding: 5px;
+        text-align: center;
+        width: 300px;
+        height: 300px;
+    }
+
+    #page_close {
+        display: block;
+        position: relative;
+        float: right;
+    }
+
+    .grid-container-function {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto;
+        padding: 5px;
+    }
+
+    .grid-item-bt {
+        border: 1px solid rgba(100, 100, 100, 0.8);
+        text-align: center;
+        padding: 10px;
+        margin-left: 3em;
+    }
+</style>
+
+<body>
+    <h1>三体云联麦直播DEMO</h1>
+    <a href="../../index.html" id="page_close">返回</a> <br>
+
+    <div class="grid-container"></div>
+
+    <div class="grid-container-function" id="function">
+        <button class="grid-item-bt" id="mute_all_bt">不听别人</button>
+        <button class="grid-item-bt" id="unmute_all_bt">听别人</button>
+        <button class="grid-item-bt" id="mute_all_bt">不听别人</button>
+        <button class="grid-item-bt" id="unvmute_all_bt">看别人</button>
+        <button class="grid-item-bt" id="start_screen_share_bt">开始屏幕共享</button>
+        <button class="grid-item-bt" id="stop_screen_share_bt">结束屏幕共享</button>
+        <button class="grid-item-bt" id="">踢出房间</button>
+        <button class="grid-item-bt" id="">扬声器静音</button>
+        <button class="grid-item-bt" id="">扬声器开启</button>
+        <button class="grid-item-bt" id="close_mick_bt">关闭麦克风</button>
+        <button class="grid-item-bt" id="open_mick_bt">启动麦克风</button>
+        <button class="grid-item-bt" id="mute_bt">mute</button>
+        <button class="grid-item-bt" id="unmute_bt">unmute</button>
+        <button class="grid-item-bt" id="vmute_bt">摄像头vmute</button>
+        <button class="grid-item-bt" id="unvmut_bt">摄像头unvmute</button>
+        <button class="grid-item-bt" id="enable_camera_bt">启动摄像头</button>
+        <button class="grid-item-bt" id="disable_camera_bt">关闭摄像头</button>
+        <button class="grid-item-bt" id="">关闭网络显示</button>
+        <button class="grid-item-bt" id="">加载媒体文件</button>
+        <button class="grid-item-bt" id="open_mix_bt">开始伴奏</button>
+        <button class="grid-item-bt" id="close_mix_bt">结束伴奏</button>
+        <button class="grid-item-bt" id="getPlaybackDefaultDevice_bt">获取默认扬声器</button>
+        <button class="grid-item-bt" id="getRecordingDevice_bt">获取录音设备</button>
+        <button class="grid-item-bt" id="getNumOfPlayoutDevices_bt">扬声器设备数量</button>
+        <button class="grid-item-bt" id="getRecordingDefaultDevice_bt">取默认录音设备</button>
+        <button class="grid-item-bt" id="startVideoDeviceTest_bt">开始视频设备测试</button>
+        <button class="grid-item-bt" id="stopVideoDeviceTest_bt">停止视频测试测试</button>
+    </div>
+
+    <div id="div_info">
+        <span>房间号:&Tab;</span>
+        <span>角色:&Tab;</span>
+        <span>ID:&Tab;</span>
+        <span>房间人数:&Tab;</span>
+        <span>视频上行:&Tab;</span>
+        <span>视频下行:&Tab;</span>
+        <span>推流地址:&Tab;</span>
+    </div>
+
+    <textarea rows="10" cols="150" id='info'></textarea>
+    <script>
+        require('../js/room.js');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Electron SDK for  windowsbk</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>一，相关接口说明：</h1>
+<h2>1.Bool initialize(String appid)</h2>
+<p>初始化SDK。<br />
+参数一：Appid：应用id，由三体云后台分配，区别不同应用的唯一标识<br />
+输出： true 表示初始化成功，false 表示失败  
+</p>
+<h2>2、String getVersion()</h2>
+<p>获取接口版本号<br />
+输入参数：无<br />
+输出：返回SDK版本信息  
+</p>
+<h2>3、Bool destroy（）</h2>
+<p>注销SDK。<br />
+输入：无<br />
+输出：true 表示成功，false表示失败  
+</p>
+<h2>4、Int joinChannel(string channelkey, string channelname, Number userId)</h2>
+<p>加入房间<br />
+参数一：channelkey，频道key<br />
+参数二：channelname，频道名称，用户加入同一个频道的唯一标识<br />
+参数三：userId，用户ID，唯一标识；默认为0，由系统自动分配<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>5、Bool leaveChannel（）</h2>
+<p>离开当前频道<br />
+输入：无<br />
+输出：true表示成功。  
+</p>
+<h2>6、Int setChannelProfile（RoomMode_TTT profile）</h2>
+<p>设置频道模式<br />
+参数一：profile，频道模式，具体取值参考如下数据结构：<br />
+typedef enum RoomMode<em>TTT<br />
+{<br />
+	ROOM</em>MODE<em>COMMUNICATION<em>TTT,    // 互动模式<br />
+	ROOM</em>MODE</em>LIVE<em>TTT,             // 直播模式<br />
+	ROOM</em>MODE<em>GAME<em>FREE</em>TTT,        // 游戏自由模式<br />
+	ROOM<em>MODE<em>GAME</em>COMMAND</em>TTT,     // 游戏指挥模式<br />
+	ROOM<em>MODE</em>CONFERENCE</em>TTT,       // 会议模式<br />
+	ROOM<em>MODE</em>MANUAL<em>TTT,           // 手动模式<br />
+	ROOM<em>MODE</em>UNFINE</em>TTT,           // 未定义模式  
+</p>
+<p>}RoomMode_TTT;<br />
+输出：0表示成功，其他表示失败，  
+</p>
+<h2>7、Int setClientRole（int role）</h2>
+<p>设置用户的角色<br />
+输入：role，具体取值参考如下<br />
+enum CLIENT<em>ROLE</em>TYPE<em>TTT<br />
+{
+    CLIENT<em>ROLE</em>BROADCASTER</em>TTT = 1,<br />
+    CLIENT<em>ROLE</em>ANCHOR_TTT = 2,<br />
+	/**<br />
+	* 观众角色(默认)<br />
+	*/<br />
+	CLIENT<em>ROLE</em>AUDIENCE_TTT = 3,<br />
+};<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>8、Int setupLocalVideo（int renderMode， Uint64  uid）</h2>
+<p>设置本地视频显示模式<br />
+参数一：renderMode，具体取值参考如下：<br />
+参数二： uid，本地视频对应的用户id<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>9、Int enableVideo()</h2>
+<p>打开视频模式。可以在加入频道前或者通话中调用，在加入频道前调用，则自动开启视频模式，在通话中调用则由音频模式切换为视频模式。 调用 disableVideo() 方法可关闭视频模式。<br />
+输入：无<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>10、Bool startPreview()</h2>
+<p>启动本地视频预览。在开启预览前，必须先调用 setupLocalVideo 设置预览窗口及属性，且必须调用     enableVideo() 开启视频功能<br />
+输入：无<br />
+输出：true表示开启成功  
+</p>
+<h2>11、Bool stopPreview()</h2>
+<p>停止本地视频预览<br />
+输入：无<br />
+输出：true表示成功  
+</p>
+<h2>12、Bool setVideoProfile(int profile, Bool swapWidthAndHeight)</h2>
+<p>设置视频编码属性（Profile）。每个属性对应一套视频参数，如分辨率、帧率、码率等。 当设备的摄像头不支持指定的分辨率时，SDK 会自动选择一个合适的摄像头分辨率，但是编码分辨率仍然用 setVideoProfile() 指定的<br />
+参数一：profile，预设的视频参数，具体取值参考如下：<br />
+视频属性	枚举值	分辨率(宽x高)	帧率(fps)	码率(kbps)<br />
+VIDEO<em>PROFILE</em>120P	110	160<em>120	15	65<em>1000<br />
+VIDEO<em>PROFILE<em>180P	111	320</em>180	15	140</em>1000<br />
+VIDEO</em>PROFILE<em>240P	112	320<em>240	15	200<em>1000<br />
+VIDEO</em>PROFILE</em>360P	113	640</em>360	15	400<em>1000<br />
+VIDEO<em>PROFILE<em>480P	114	640</em>480	15	500</em>1000<br />
+VIDEO</em>PROFILE<em>720P	115	1280<em>720	15	1130<em>1000<br />
+VIDEO</em>PROFILE</em>1080P	116	1920</em>1080	15	2080</em>1000<br />
+参数二：swapWidthAndHeight，是否将视频宽高互换<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>13、Int setupRemoteVideo(int renderMode, uint64 uid, string devId)</h2>
+<p>设定远端用户的视频显示模式<br />
+参数一：renderMode，具体取值参考如下：<br />
+		1 视频放缩后充满窗体； 2 视频全部显示，空出的窗体部分补黑边<br />
+参数二：uid， 远端视频对应的用户ID<br />
+参数三：devId，视频设备ID<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>14、Bool enablelastmileTest()</h2>
+<p>启动网路测试<br />
+输入：无<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>16、Bool disableLastmileTest()</h2>
+<p>停止网路测试<br />
+输入：无<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>17、Int disableVideo()</h2>
+<p>关闭视频模式。可以在加入频道前或者通话中调用，在加入频道前调用，则自动开启纯音频模式，在通话中调用则由视频模式切换为纯音频频模式。 调用 enableVideo() 方法可开启视频模式。<br />
+输入：无<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>18、Int enableAudio()</h2>
+<p>打开音频通话模式，<br />
+输入：无<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>19、Int disableAudio()</h2>
+<p>关闭音频通话模式。关闭后，本次通话为纯视频模式<br />
+输入：无<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>20、Bool startScreenCapture(int left, int top, int right, int bottom)</h2>
+<p>启动屏幕分享功能，通过参数设定分享的屏幕矩形的坐标点<br />
+参数一：left，左顶点的x坐标<br />
+参数二：top，左顶点的y坐标<br />
+参数三：right，右下角顶点的x坐标<br />
+参数四：bottom，右下角顶点的y坐标<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>21、Int stopScreenCapture()</h2>
+<p>停止屏幕分享<br />
+输入：无<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>22、Int configPublisher（string url）</h2>
+<p>设置推流地址，允许服务器把频道中的音视频推送到直播服务器上，进行直播。<br />
+输入：url，直播服务器地址，可以是第三方的直播服务器或者CDN服务器。<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>23、Bool muteLocalAudioStream(Bool mute)</h2>
+<p>静音/取消静音。该方法用于允许/禁止往网络发送本地音频流。<br />
+输入：mute，true表示静音，false表示取消静音<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>24、Bool muteAllRemoteAudioStreams(bool mute)</h2>
+<p>允许/禁止接收和播放远端用户的音频流，即对所有远端用户进行静音与否。<br />
+输入：mute，true表示静音，false表示取消静音<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>25、Bool muteRemoteAudioStream(uint64 uid, bool mute)</h2>
+<p>静音指定远端用户/对指定远端用户取消静音。<br />
+参数一：uid，指定用户的id<br />
+参数二：mute，true表示静音，false表示取消静音<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>26、Bool muteLocalVideoStream( bool mute)</h2>
+<p>打开/关闭本地视频流数据，mute为true是表示本地视频流不上行，远端客户将无法看到这个用户的视频<br />
+输入：mute，true表示关闭本地视频流，false表示打开本地 视频流<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>27、Bool muteAllRemoteVideoStreams(bool mute)</h2>
+<p>允许/禁止接收和播放所有人的视频流。<br />
+输入：mute，true表示停止所有人视频流，false表示开始接收所有人的视频流<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>28、Bool enableAudioVolumeIndication(int interval, int smooth)</h2>
+<p>启用音量提示回调<br />
+参数一：interval，指定音量提示的时间间隔。小于0禁用音量提示功能，单位为毫秒<br />
+参数二：smooth，平滑系数。默认可以设置为3<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>29、Int startAudioMixing(string filepath, bool loolkback, bool replace, int cycle)</h2>
+<p>指定本地音频文件来和麦克风采集的音频流进行混音和替换(用音频文件替换麦克风采集的音频流)， 可以通过参数选择是否让对方听到本地播放的音频和指定循环播放的次数。<br />
+参数一：filepath，指定需要混音的本地音频文件名和文件路径。支持以下音频格式：mp3, aac, m4a, 3gp, wav, flac<br />
+参数二：loopback，True只有本地可以听到混音或替换后的音频流，False本地和对方都可以听到混音或替换后的音频流<br />
+参数三：replace，True音频文件内容将会替换本地录音的音频流，False音频文件内容将会和麦克风采集的音频流进行混音<br />
+参数四：指定音频文件循环播放的次数。正整数代表循环的次数<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>30、Bool stopAudioMixing()</h2>
+<p>停止文件混音<br />
+输入：无<br />
+输出：true 表示成功，false表示失败  
+</p>
+<h2>31、Bool pauseAudioMixing()</h2>
+<p>暂停文件混音<br />
+输入：无<br />
+输出：true 表示成功，false表示失败  
+</p>
+<h2>32、Bool resumeAudioMixing()</h2>
+<p>恢复文件混音<br />
+输入：无<br />
+输出：true 表示成功，false表示失败  
+</p>
+<h2>33、Bool adjustAudioMixingVolume(int volume)</h2>
+<p>调整文件伴奏混音的音量，<br />
+输入：无<br />
+输出：true 表示成功，false表示失败  
+</p>
+<h2>34、Int getAudioMixingDuration()</h2>
+<p>获取伴奏文件的长度<br />
+输入：无<br />
+输出：伴奏文件的时长  
+</p>
+<h2>35、Int getAudioMixingCurrentPosition()</h2>
+<p>获取伴奏文件的当前进度<br />
+输入：无<br />
+输出：返回非0的整形。  
+</p>
+<h2>36、Bool setAudioMixingPosition(int pos)</h2>
+<p>调整当前伴奏文件的进度<br />
+输入：pos，新的进度<br />
+输出：true 表示成功，false表示失败  
+</p>
+<h2>37、Int setHighQualityAudioParamters(bool enable)</h2>
+<p>设置音频高音质选项。切勿在加入频道后再次调用本方法。<br />
+输入：enable，true表示启用，false表示关闭<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>38、Bool resizeRreview（）</h2>
+<p>所有视频充满窗体<br />
+输入：无<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>39、Bool muteRemoteVideoStream(uint64 uid, bool mute)</h2>
+<p>允许/禁止播放指定的远端视频流。<br />
+参数一：uid，指定远端用户的id<br />
+参数二：mute，true表示禁止，false表示允许<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>40、Bool muteRemoteSpeaking(uint64 uid, bool mute)</h2>
+<p>将某个远端用户静音，其他所有用户都无法听到该用户的说话<br />
+参数一：uid，指定远端用户的id<br />
+参数二：mute，true表示静音，false表示解除静音<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>41、Bool kickChannelUser（uint64 uid）</h2>
+<p>将某个用户请出直播房间<br />
+输入：uid，即将被移除房间的用户id<br />
+输入：true表示成功，false表示失败  
+</p>
+<h2>42、Int setSpeakerphoneVolume(int volume)</h2>
+<p>调整本地麦克风的音量<br />
+输入：volume，新的音量<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>43、Int sendChatMessage(uint64 uid, int type, string msg)</h2>
+<p>发送聊天消息<br />
+参数一：uid，消息发送目标id<br />
+参数二：type，消息类型：文字，图片，语音<br />
+参数三：msg，即将发送的消息<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>44、Bool startRecordingDeviceTest(int indicationInterval)</h2>
+<p>测试麦克风设备测试录音音频设备，知道它是否能正常工作。<br />
+输入：indicationInterval ， 本地采集声音音量上报回调的时间间隔<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>45、Bool stopRecordingDeviceTest()</h2>
+<p>停止录制音频设备测试<br />
+输入：无<br />
+输出：true表示成功，false表示失败  
+</p>
+<h2>46、Bool startPlaybackDeviceTest(sring filepath)</h2>
+<p>开始回放音频文件，测试扬声器是否正常<br />
+输入：filepath，音频文件的路径<br />
+输出：true表示成功，其他表示失败  
+</p>
+<h2>47、Bool stopPlaybackDeviceTest()</h2>
+<p>停止回放音频文件<br />
+输入：无<br />
+输出：true表示成功，其他表示失败  
+</p>
+<h2>48、Bool startVideoDeviceTest()</h2>
+<p>开始视频设备测试<br />
+输入：无<br />
+输出：true表示成功，其他表示失败  
+</p>
+<h2>49、Bool stopVideoDeviceTest()</h2>
+<p>停止视频测试测试<br />
+输入：无<br />
+输出：true表示成功，其他表示失败  
+</p>
+<h2>50、int GS_GetNumberofVideoDevices()</h2>
+<p>获取系统视频采集设备的数量<br />
+输入：无<br />
+输出：视频设备数量  
+</p>
+<h2>51、String GS_GetVideoDeviceName(int index)</h2>
+<p>获取指定索引对应的设备名称<br />
+输入：index， 设备列表索引<br />
+输出：设备名称  
+</p>
+<h2>52、Int GS_SetDeviceCaptureParams(string wcharname, int width, int height, int frames, int bitrate)</h2>
+<p>设置本地采集参数<br />
+参数一：视频设备名称<br />
+参数二：宽度<br />
+参数三：高度<br />
+参数四：帧率<br />
+参数无：码率<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>53、Int GS_SetDefaultDevice(string devicename)</h2>
+<p>设置默认设备<br />
+输入：devicename， 设备名称<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>54、Int setSpeakerVolume(int volume)</h2>
+<p>设置扬声器音量<br />
+输入：volume， 音量值<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>55、Int setMicVolume（int volume）</h2>
+<p>设置麦克风音量
+输入：volume，音量值
+输出：0表示成功，其他表示失败</p>
+<h2>56、Int getNumOfRecordingDevices()</h2>
+<p>获取录音设备数量<br />
+输入：无<br />
+输出：返回值&lt;0表示失败；返回值&gt;0表示成功  
+</p>
+<h2>57、Int getNumOfPlayoutDevices()</h2>
+<p>获取扬声器设备数量<br />
+输入：无<br />
+输出：返回值&lt;0表示失败；返回值&gt;0表示成功  
+</p>
+<h2>58、String getRecordingDefaultDevice()</h2>
+<p>获取默认录音设备的id<br />
+输入：无<br />
+输出：json格式的字符串，格式如下： 
+{
+    &quot;errCode&quot;: &quot;0&quot;,  //0表示成功，其他表示失败<br />
+    &quot;deviceID&quot;: &quot;设备名称&quot;<br />
+}  
+</p>
+<h2>59、String getPlaybackDefaultDevice()</h2>
+<p>获取默认扬声器的ID<br />
+输入：无<br />
+输出：json格式的字符串，格式如下：<br />
+{<br />
+    &quot;errCode&quot;: &quot;0&quot;,  //0表示成功，其他表示失败<br />
+    &quot;deviceID&quot;: &quot;设备名称&quot;<br />
+}  
+</p>
+<h2>60、String getRecordingDevice(int index)</h2>
+<p>根据索引获取录音设备的名称和ID<br />
+输入：index，需要获取的设备索引<br />
+输出：json格式的字符串，格式如下：<br />
+{<br />
+    &quot;errCode&quot;: &quot;0&quot;,  //0表示成功，其他表示失败<br />
+    &quot;deviceID&quot;: &quot;设备ID&quot;，<br />
+	  “deviceName” : “设备名称”<br />
+}  
+</p>
+<h2>61、String getPlaybackDevice(int index)</h2>
+<p>更具索引获取播放设备的信息<br />
+输入：index，设备索引<br />
+输出：json格式的字符串，格式如下：<br />
+	{<br />
+    &quot;errCode&quot;: &quot;0&quot;,<br />
+    &quot;deviceID&quot;: &quot;设备名称&quot;,<br />
+    &quot;deviceName&quot;: &quot;liyong de diannao&quot;<br />
+}  
+</p>
+<h2>62、Int setRecordingDevice(string deviceId)</h2>
+<p>设置录音设备<br />
+输入：deviceId、，录用设备的ID<br />
+输出：0表示成功，其他表示失败  
+</p>
+<h2>63、Int setSpeakerDevice(string deviceId)</h2>
+<p>设置放音设备<br />
+输入：deviceId，放音设备的id<br />
+输出：0表示成功，其他表示失败。  
+</p>
+<h1>二，事件通知</h1>
+<p>sdk的不同的事件通知发送给js不同的json串。事件通知对应的json串如下。  
+</p>
+<h2>加入频道回调</h2>
+<p>{
+   &quot;callbackname&quot; : &quot;onJoinChannelSuccess&quot;, &quot;channel&quot; : &quot;123456&quot;,&quot;uid&quot; : &quot;123456&quot;
+}<br />
+表示客户端已经成功进入指定房间。</p>
+<p>名称	描述
+channel	频道名称
+uid	登录的用户ID</p>
+<h2>发生错误回调</h2>
+<p>{
+   &quot;callbackname&quot; : &quot;onError&quot;, &quot;err&quot; : 203
+}<br />
+表示 SDK 运行时出现了（网络或媒体相关的）错误。  
+</p>
+<p>名称	描述<br />
+err	错误码<br />
+错误码：  
+</p>
+<p>名称  	错误码	原因描述  
+</p>
+<p>ERROR<em>KICK</em>BY_HOST	      201	被房主移出房间  
+</p>
+<p>ERROR<em>KICK</em>BY_PUSHRTMPFAILED	202	RTMP推流失败  
+</p>
+<p>ERROR<em>KICK</em>BY_SERVEROVERLOAD	203	服务器过载  
+</p>
+<p>ERROR<em>KICK</em>BY<em>MASTER</em>EXIT	204	  房主已经离开房间  
+</p>
+<p>ERROR<em>KICK</em>BY_RELOGIN	205  	重复登录  
+</p>
+<p>ERROR<em>KICK</em>BY_NOAUDIODATA	206 	长时间没有上行音频数据  
+</p>
+<p>ERROR<em>KICK</em>BY_NOVIDEODATA	207	长时间没有上行视频数据  
+</p>
+<p>ERROR<em>KICK</em>BY_NEWCHAIRENTER 	208	其他人以主播身份进入房间  
+</p>
+<p>ERROR<em>KICK</em>BY_CHANNELKEYEXPIRED 	209 	CHANNEL KEY失效了  
+</p>
+<h2>离开频道回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onLeaveChannel&quot;
+}  
+</p>
+<h2>说话声音音量提示回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onAudioVolumeIndication&quot;，
+&quot;nUserID&quot; : &quot;1234&quot;，
+&quot;audioLevel&quot; : 3，
+&quot;audioLe velFullRange&quot; : 3434
+}<br />
+提示谁在说话及其音量。默认禁用。可以通过 enableAudioVolumeIndication 方法设置。</p>
+<p>名称	描述
+nUserID	说话者的用户ID
+audioLevel	说话者的音量，在0-9之间
+audioLevelFullRange	说话者的音量，音量范围更大0-32767.5之间</p>
+<h2>其他用户加入当前频道回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onUserJoined&quot;，
+&quot;uid&quot; : 3453，
+&quot;identity&quot; : 1
+}<br />
+提示有主播加入了频道。如果该客户端加入频道时已经有人在频道中，SDK 也会向应用程序上报这些已在频道中的用户</p>
+<p>名称	描述
+uid	加入频道的用户ID
+identity	加入频道的用户的身份，副播或观众</p>
+<h2>其他用户离开当前频道回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onUserOffline&quot;，
+&quot;uid&quot; : 3453，
+&quot;reason&quot; : 1
+}<br />
+提示有主播离开了频道。</p>
+<p>名称	描述
+uid	离开频道的用户ID
+reason	该用户离开频道的原因</p>
+<h2>统计数据回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onRtcStats&quot;，
+&quot;rxAudioKBitRate&quot; : 3453，
+&quot;rxBytes&quot; : 1，
+&quot;rxVideoKBitRate&quot; : 1，
+&quot;txAudioKBitRate&quot; : 1，
+&quot;txBytes&quot; : 1，
+&quot;txVideoKBitRate&quot; : 1
+ root[&quot;users&quot;] =  2344
+}  
+</p>
+<p>txBytes	发送的总字节数<br />
+rxBytes	接收的总字节数<br />
+rxAudioKBitRate	当前发送音频的比特率<br />
+rxAudioKBitrate	当前接收音频的比特率<br />
+txVideoKBitRate	当前发送视频的比特率<br />
+rxVideoKBitrate	当前接收视频的比特率<br />
+user	参与直播的用户总数</p>
+<h2>连接丢失回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onConnectionLost&quot;
+}<br />
+该回调方法表示 SDK 和服务器失去了网络连接。</p>
+<h2>本地视频显示回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onFirstLocalVideoFrame&quot;
+}<br />
+提示第一帧本地视频画面已经显示在屏幕上。</p>
+<p>名称	描述<br />
+width	视频流宽(像素)
+height	视频流高(像素)</p>
+<h2>远端视频显示回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onFirstRemoteVideoFrame&quot;
+}  
+</p>
+<p>第一帧远程视频显示在视图上时，触发此调用</p>
+<p>名称	描述<br />
+uid	加入频道的用户ID
+width	视频流宽(像素)
+height	视频流高(像素)</p>
+<h2>远端视频接收解码回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onFirstRemoteVideoDecoded&quot;
+}
+收到第一帧远程视频流并解码成功时，触发此调用。</p>
+<p>名称	描述<br />
+uid	加入频道的用户ID<br />
+width	视频流宽(像素)<br />
+height	视频流高(像素)</p>
+<h2>其他用户启用/关闭视频</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onUserEnableVideo&quot;
+} <br />
+提示有其他用户启用/关闭了视频功能。关闭视频功能是指该用户只能进行语音通话，不能显示、发送自己的视频，也不能接收、显示别人的视频。</p>
+<p>名称	描述<br />
+uid	用户ID<br />
+enabled	用户已启用/关闭了视频功能</p>
+<h2>本地视频统计回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onLocalVideoStats&quot;
+}<br />
+名称	描述</p>
+<p>stats	本地视频相关的统计信息<br />
+报告更新本地视频统计信息，该回调函数每两秒触发一次</p>
+<h2>远端视频统计回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onRemoteVideoStats&quot;
+}<br />
+报告更新远端视频统计信息，该回调函数每两秒触发一次。</p>
+<p>名称	描述
+stats	远端视频的统计信息</p>
+<h2>收到聊天消息回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;OnChatMessageRecived&quot;
+}<br />
+收到其他用户发来的消息时触发此回调。</p>
+<p>名称	描述<br />
+nSrcUserID	消息发送方userID</p>
+<p>type	消息类型</p>
+<p>strData	消息内容</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
