@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "package-win": "electron-packager . 3ttech-win-demo --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon_64.ico --prune=true --out=release-builds --version-string.CompanyName=3ttech --version-string.FileDescription=3ttech --version-string.ProductName='Windows 3ttech Demo'",
-    "copy-winsdk": "xcopy .\\3ttechsdk\\build\\Release\\* .\release-builds\\3ttech-win-demo-win32-ia32\\ /R"
+    "copy-winsdk": "xcopy .\\3ttechsdk\\build\\Release\\* .\\release-builds\\3ttech-win-demo-win32-ia32\\ /R"
   },
   "keywords": [
     "Electron",
