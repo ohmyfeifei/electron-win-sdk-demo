@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Electron SDK for  windowsbk</title>
+<title>Electron SDK for  windowsdk</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
@@ -291,6 +291,11 @@ img {
 </style>
 </head>
 <body>
+<h1>编译安装 nodejs addons</h1>
+<pre><code>
+npm install
+./node_modules/.bin/electron-rebuild
+</pre><p></code></p>
 <h1>一，相关接口说明：</h1>
 <h2>1.Bool initialize(String appid)</h2>
 <p>初始化SDK。<br />
@@ -670,6 +675,25 @@ VIDEO</em>PROFILE</em>1080P	116	1920</em>1080	15	2080</em>1000<br />
 输入：deviceId，放音设备的id<br />
 输出：0表示成功，其他表示失败。  
 </p>
+<h2>64、Int setVideoCompositingLayout(string seiJson)</h2>
+<p>设置直播场景里的画中画布局</p>
+<p>输入：json格式的字符串，格式如下： 
+{&quot;canvas&quot;:{&quot;bgrgb&quot;:[35,67,48],&quot;h&quot;:737,&quot;w&quot;:578},&quot;mid&quot;:&quot;123487&quot;,&quot;pos&quot;:[{&quot;h&quot;:1,&quot;id&quot;:&quot;499862&quot;,&quot;w&quot;:0.5,&quot;x&quot;:0,&quot;y&quot;:0,&quot;z&quot;:0},{&quot;h&quot;:1,&quot;id&quot;:&quot;123487&quot;,&quot;w&quot;:0.5,&quot;x&quot;:0.5,&quot;y&quot;:0,&quot;z&quot;:1}]}</p>
+<p>bgrgb，背景色<br />
+h，画布高<br />
+w,画布宽<br />
+mid，用户userid  
+</p>
+<p>x,y 用户视频左上角坐标，取值0.0~1.0<br />
+w,h 用户视频宽高，取值0.0~1.0<br />
+id 用户userid</p>
+<pre><code>{  
+&quot;errCode&quot;: &quot;0&quot;,  
+&quot;deviceID&quot;: &quot;设备名称&quot;,  
+&quot;deviceName&quot;: &quot;liyong de diannao&quot;  
+}  
+</code></pre>
+
 <h1>二，事件通知</h1>
 <p>sdk的不同的事件通知发送给js不同的json串。事件通知对应的json串如下。  
 </p>
@@ -830,6 +854,22 @@ stats	远端视频的统计信息</p>
 nSrcUserID	消息发送方userID</p>
 <p>type	消息类型</p>
 <p>strData	消息内容</p>
+<h2>收到yuv视频数据回调</h2>
+<p>{
+&quot;callbackname&quot; : &quot;onUserYuvPush&quot;,&quot;width&quot; : 640,&quot;height&quot; : 480,&quot;data&quot; : &quot;QkFTRTY0JXU1MkEwJXU1QkM2JXU4OUUzJXU1QkM2&quot;,
+ &quot;len&quot; : 174658,&quot;uid&quot; : 32344
+}<br />
+收到其他用户发来的消息时触发此回调。</p>
+<p>名称	描述<br />
+data	收到的视频数据 ，是经过base64加密后的字符串。需要经过base64解密后才是 yuv的视频数据  
+</p>
+<p>width	YUV视频帧的宽度  
+</p>
+<p>height	YUV视频帧的高度  
+</p>
+<p>len	YUV视频帧的大小 </p>
+<p>uid	用户的id  
+</p>
 
 </body>
 </html>

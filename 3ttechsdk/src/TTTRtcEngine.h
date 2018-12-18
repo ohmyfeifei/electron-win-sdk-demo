@@ -324,9 +324,6 @@ public:
 		(void)height;
 	}
 
-	virtual void OnUserH264Push(const char* data, int len, const char* devId, long long ts, int width, int height, VideoFrameType_TTT frameType) {
-
-	}
 
 	
 };
@@ -494,6 +491,8 @@ public:
 	* @return 0代表方法调用成功，其他代表失败。
 	*/
 	virtual int setVideoCompositingLayout(const VideoCompositingLayout_TTT& sei) = 0;
+
+	virtual int setVideoCompositingLayoutSei(const char*  sei, int len) = 0;
 
 	/**
 	* 该方法用于在加入频道前为引擎创建一份推流设置。我们提供一个 Builder 类方便配置旁路直播推流，例如:
@@ -700,7 +699,7 @@ public:
 
 	virtual int startPlaybackDeviceTest(const char* testAudioFilePath) = 0;
 	virtual int stopPlaybackDeviceTest() = 0;
-	virtual int starVideotDeviceTest(view_ttt hwnd) = 0;
+	virtual int startVideotDeviceTest(view_ttt hwnd) = 0;
 	virtual int stopVideoDeviceTest() = 0;
 	/**
 	* 设置远端mp4视频显示属性,收到mp4开始的回调后调用

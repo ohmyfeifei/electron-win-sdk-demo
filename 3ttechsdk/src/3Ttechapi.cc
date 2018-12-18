@@ -670,9 +670,12 @@ void setVideoCompositingLayout(const Nan::FunctionCallbackInfo<v8::Value>& args)
 	int ret = -1;
 	VideoCompositingLayout_TTT sei;
 	//TODO 参数怎么组织
-
+	Nan::Utf8String utf8_value(args[0]);
+	int len = utf8_value.length();
+	std::string url(*utf8_value, len);
+	
 	if (m_lpTTTEngine_TTT != NULL)
-		ret = m_lpTTTEngine_TTT->setVideoCompositingLayout(sei);
+		ret = m_lpTTTEngine_TTT->setVideoCompositingLayoutSei(url.data(), url.length());
 
 	args.GetReturnValue().Set(Nan::New(ret));
 }
@@ -1219,11 +1222,11 @@ void stopPlaybackDeviceTest(const Nan::FunctionCallbackInfo<v8::Value>& args) {
 	args.GetReturnValue().Set(Nan::New(true));
 }
 
-void starVideotDeviceTest(const Nan::FunctionCallbackInfo<v8::Value>& args) {
+void startVideotDeviceTest(const Nan::FunctionCallbackInfo<v8::Value>& args) {
 	Isolate* isolate = args.GetIsolate();
 
 	if (m_lpTTTEngine_TTT != NULL)
-		m_lpTTTEngine_TTT->starVideotDeviceTest(NULL);
+		m_lpTTTEngine_TTT->startVideotDeviceTest(NULL);
 
 	args.GetReturnValue().Set(Nan::New(true));
 }
@@ -1793,8 +1796,8 @@ void Init(v8::Local<v8::Object> exports) {
 	exports->Set(Nan::New("stopPlaybackDeviceTest").ToLocalChecked(),
 		Nan::New<v8::FunctionTemplate>(stopPlaybackDeviceTest)->GetFunction());
 
-	exports->Set(Nan::New("starVideotDeviceTest").ToLocalChecked(),
-		Nan::New<v8::FunctionTemplate>(starVideotDeviceTest)->GetFunction());
+	exports->Set(Nan::New("startVideotDeviceTest").ToLocalChecked(),
+		Nan::New<v8::FunctionTemplate>(startVideotDeviceTest)->GetFunction());
 
 	exports->Set(Nan::New("stopVideoDeviceTest").ToLocalChecked(),
 		Nan::New<v8::FunctionTemplate>(stopVideoDeviceTest)->GetFunction());
