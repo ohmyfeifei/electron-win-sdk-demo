@@ -344,7 +344,7 @@ void CTTTEngineEventHandler::OnChatMessageRecived(long nSrcUserID, int type, con
 	root["sSeqID"] = s_str1;
 	root["strData"] = s_str2;
 
-	root["callbackname"] = "OnChatMessageRecived";
+	root["callbackname"] = "onChatMessageRecived";
 
 
 	std::string sJson = root.toStyledString();
@@ -555,7 +555,7 @@ void CTTTEngineEventHandler::onUserEnableVideo(uid_ttt uid, bool enabled)
 }
 void CTTTEngineEventHandler::onRemoteVideoDecoded(long long uid, VideoFrame_TTT& mVideoFrame)
  {
-	OutputDebugString("OnRemoteVideoDecodered data func!");
+	OutputDebugString("onRemoteVideoDecodered data func!");
 		TaskQueue *pTask = new TaskQueue();
 		pTask->cmd = cmd_push_queue;
 		Json::Value root;
@@ -595,7 +595,7 @@ void CTTTEngineEventHandler::OnOtherAnchorLink(long long roomID, long long operU
 	root["roomID"] = roomID;
 	root["operUserID"] = operUserID;
 
-	root["callbackname"] = "OnOtherAnchorLink";
+	root["callbackname"] = "onOtherAnchorLink";
 	std::string sJson = root.toStyledString();
 	pTask->json = sJson;
 
@@ -616,7 +616,7 @@ void CTTTEngineEventHandler::OnOtherAnchorLinked(long long roomID, long long ope
 	root["operUserID"] = operUserID;
 	root["operDevID"] = s_str1;
 	root["nError"] = nError;
-	root["callbackname"] = "OnOtherAnchorLink";
+	root["callbackname"] = "onOtherAnchorLink";
 	std::string sJson = root.toStyledString();
 	pTask->json = sJson;
 
@@ -632,7 +632,7 @@ void CTTTEngineEventHandler::OnOtherAnchorUnlink(long long roomID, long long ope
 
 	root["roomID"] = roomID;
 	root["operUserID"] = operUserID;
-	root["callbackname"] = "OnOtherAnchorUnlink";
+	root["callbackname"] = "onOtherAnchorUnlink";
 
 	std::string sJson = root.toStyledString();
 	pTask->json = sJson;
@@ -645,7 +645,7 @@ void CTTTEngineEventHandler::OnOtherAnchorUnLinked(long long roomID, long long o
 	TaskQueue *pTask = new TaskQueue();
 	pTask->cmd = cmd_push_queue;
 	Json::Value root;
-	root["callbackname"] = "OnOtherAnchorUnLinked";
+	root["callbackname"] = "onOtherAnchorUnLinked";
 
 	root["roomID"] = roomID;
 	root["operUserID"] = operUserID;
