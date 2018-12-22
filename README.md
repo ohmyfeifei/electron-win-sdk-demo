@@ -4,7 +4,8 @@ _The 3ttechsdk folder also is eletron windows SDKs for your._<br>
 [Offical 3ttech website](http://3ttech.cn/) <br>
 
 ## Environment and dependencies
-The SDKs were built for win32 bits, then your node have to 32-bit version.
+The SDKs were built for win32 bits, then your node have to 32-bit version.<br>
+Dependence: Please Install [node-gyp](https://github.com/nodejs/node-gyp).
 
 ## Build and install
 <pre><code>
