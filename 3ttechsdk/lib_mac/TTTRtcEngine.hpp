@@ -21,6 +21,7 @@ enum TTT_ERROR_CODE
     ERROR_ENTER_VERIFYFAILED   = 9003, // 验证码错误
     ERROR_ENTER_BADVERSION     = 9004, // 版本错误
     ERROR_ENTER_UNKNOWN        = 9005, // 未知错误
+    ERROR_ENTER_NOANCHOR       = 9006, // 房间内没有主播
     ERROR_NO_AUDIODATA         = 9101, // 长时间没有上行音频数据
     ERROR_NO_VIDEODATA         = 9102, // 长时间没有上行视频数据
     ERROR_NO_RECEIVEDAUDIODATA = 9111, // 长时间没有下行音频数据
@@ -57,6 +58,21 @@ enum TTT_USER_OFFLINE_REASON
     USER_OFFLINE_QUIT            = 1, // 用户主动离开
     USER_OFFLINE_DROPPED         = 2, // 因过长时间收不到对方数据包，超时掉线。
     USER_OFFLINE_BECOME_AUDIENCE = 3, // 当用户身份从主播切换为观众时触发
+};
+
+/**
+ *  视频编码属性
+ */
+enum TTT_VIDEO_PROFILE
+{
+                               //    res    fps   kbps
+    VIDEO_PROFILE_120P  =  0,  //  176x128   15     65
+    VIDEO_PROFILE_180P  = 10,  //  320x192   15    140
+    VIDEO_PROFILE_240P  = 20,  //  320x240   15    200
+    VIDEO_PROFILE_360P  = 30,  //  640x352   15    400
+    VIDEO_PROFILE_480P  = 40,  //  848x480   15    600
+    VIDEO_PROFILE_720P  = 50,  // 1280x720   15   1130
+    VIDEO_PROFILE_1080P = 60,  // 1920x1088  15   2080
 };
 
 /**
@@ -239,7 +255,7 @@ public:
      *
      *  @return 0: 方法调用成功，<0: 方法调用失败。
      */
-    virtual int setVideoProfile(int profile, int swapWidthAndHeight);
+    virtual int setVideoProfile(TTT_VIDEO_PROFILE profile, bool swapWidthAndHeight);
     
     /**
      *  设置日志文件过滤器
@@ -414,7 +430,7 @@ public:
     
     /**
      *  踢出房间
-     *  角色为“TTTRtc_ClientRole_Anchor”调用有效
+     *  角色为“CLIENT_ROLE_ANCHOR”调用有效
      *
      *  @param uid 被踢者userID
      *

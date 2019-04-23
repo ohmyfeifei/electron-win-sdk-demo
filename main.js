@@ -9,17 +9,19 @@ function createWindow () {
   // Create the browser window.
   // mainWindow = new BrowserWindow({width: 800, height: 600})
   mainWindow = new BrowserWindow({
+    width: 1500, 
+    height: 600,
     webPreferences:{
       nodeIntegrationInWorker: true
     }
   });
-  mainWindow.maximize();
+  //mainWindow.maximize();
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -39,9 +41,9 @@ app.on('ready', createWindow)
 app.on('window-all-closed', function () {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
+//  if (process.platform !== 'darwin') {
     app.quit()
-  }
+//  }
 })
 
 app.on('activate', function () {

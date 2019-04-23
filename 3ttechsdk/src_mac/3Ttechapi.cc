@@ -254,7 +254,7 @@ void setVideoProfile(const Nan::FunctionCallbackInfo<v8::Value>& args) {
     bool swapWidthAndHeight = args[1]->BooleanValue();
     
     if (m_lpTTTEngine != NULL)
-        m_lpTTTEngine->setVideoProfile(profile, swapWidthAndHeight);
+        m_lpTTTEngine->setVideoProfile(VIDEO_PROFILE_360P, swapWidthAndHeight);
     
     args.GetReturnValue().Set(Nan::New(true));
 }
