@@ -5,20 +5,21 @@ const {dialog} = require('electron');
 
 const path = require("path");
 // The 3techSDK addons path
-const addon_path = path.join(__dirname, "../../3ttechsdk/build/Release/3TtechSDK");
+//const addon_path = path.join(__dirname, "../../3ttechsdk/build/Release/3TtechSDK");
 // the make_stream in the SDKs folder.
 const make_stream = require('../../3ttechsdk/3tstream');
 // the tttechnode are 3tech addon
-const tttechnode = require(addon_path);
+//const tttechnode = require(addon_path);
 // The varible for received data from 3tech SDKs.
-const tttdata = make_stream(tttechnode, { name: "Head Mounted Display" });
+//const tttdata = make_stream(tttechnode, { name: "Head Mounted Display" });
 
 const videoDisplay = require('../../3ttechsdk/videoDisplay');
 const displayImage = new videoDisplay();
 let uids = new Map();
 
 function initialize() {
-    let res = tttechnode.initialize("a967ac491e3acf92eed5e1b5ba641ab7");
+    //let res = tttechnode.initialize("a967ac491e3acf92eed5e1b5ba641ab7");
+    let res = tttechnode.initialize("test900572e02867fab8131651339518");
     console.log("test interface return value = ", res);
 }
 
@@ -55,15 +56,17 @@ function drawUserData(sample, type) {
     let canvas = document.getElementById(sample.uid);
     if (type == 'rgba') {
         displayImage.drawImage(sample.data, sample.width, sample.height, canvas);
+        // displayImage.drawImage(sample.data, $, sample.height, canvas);
     } else {
         displayImage.yuv2canvas(sample.data, sample.width, sample.height, canvas)
     }
 }
 
 function joinRoom() {
-    let url = new URL(window.location.href);
-    const chanid = url.searchParams.get('chanid');
-
+    //let url = new URL(window.location.href);
+    //const chanid = url.searchParams.get('chanid');
+    const chanid = '1234567';
+/*
     // initilation windows SDKs (addon).
     initialize();
 
@@ -77,25 +80,29 @@ function joinRoom() {
         return;
     }
 
-    let res = tttechnode.setChannelProfile(1);
+    let res = tttechnode.setChannelProfile(1); //CHANNEL_PROFILE_LIVEBROADCASTING
     console.log("setChannelProfile res = ", res);
 
     res = tttechnode.enableVideo();
     console.log("enableVideo res = ", res);
 
-    res = tttechnode.setClientRole(1, "liyong");
+    //res = tttechnode.setClientRole(1, "liyong");
+    res = tttechnode.setClientRole(1); //CLIENT_ROLE_ANCHOR
     console.log("setClientRole res = ", res);
 
-    res = tttechnode.setupLocalVideo(2, 0);
-    console.log("setupLocalVideo res = ", res);
+    // res = tttechnode.setupLocalVideo(2, 0);
+    // console.log("setupLocalVideo res = ", res);
 
-    res = tttechnode.setVideoProfile(112, false);
+    //res = tttechnode.setVideoProfile(112, false);
+    res = tttechnode.setVideoProfile(10, 0);
 
-    res = tttechnode.startPreview();
-    console.log("startPreview res = ", res);
+    // res = tttechnode.startPreview();
+    // console.log("startPreview res = ", res);
 
-    let num = tttechnode.joinChannel("chID", chanid, 0);
+    //let num = tttechnode.joinChannel("chID", chanid, 0);
+    let num = tttechnode.joinChannel("", "999888666", 1234567);
     console.log("joidChannel num = ", num);
+*/
 }
 
 const test_info_area = $('#info');
@@ -193,6 +200,27 @@ function bindEvents() {
 
     });
 
+    $('#getversion-bt').bind('click', () => {
+        let info = tttechnode.getVersion();
+        test_info_area.val(test_info_area.val() + info + "\n");      
+    });
+
+    $('#leaveChannel_bt').bind('click', () => {
+        let info = tttechnode.LeaveChannel();
+        test_info_area.val(test_info_area.val() + info + "\n");      
+    });
+
+    $('#setChannelProfile_bt').bind('click', () => {
+        let val = $('chanleprofile').val();
+        let info = tttechnode.setChannelProfile(val);
+        test_info_area.val(test_info_area.val() + info + "\n");      
+    });
+
+    $('#setChannelProfile_bt').bind('click', () => {
+        let val = $('setClientRole').val();
+        let info = tttechnode.setClientRole(val);
+        test_info_area.val(test_info_area.val() + info + "\n");      
+    });
 }
 
 joinRoom();

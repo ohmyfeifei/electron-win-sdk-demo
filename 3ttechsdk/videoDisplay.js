@@ -43,6 +43,8 @@ class videoDisplay {
         }
 
         context.putImageData(imageData, 0, 0);
+        // let img = this.imagedata_to_image(imageData, canvas);
+        // context.drawImage(img, 0, 0, 300, 300);
     }
 
     rgba2Canvas(rgba, width, height, canvas) {
@@ -51,6 +53,17 @@ class videoDisplay {
         let buf = Buffer.from(rgba, 'base64');
         buf.copy(imageData.data);
         context.putImageData(imageData, 0, 0);
+    }
+
+    imagedata_to_image(imagedata, canvas) {
+        var ctx = canvas.getContext('2d');
+        canvas.width = imagedata.width;
+        canvas.height = imagedata.height;
+        ctx.putImageData(imagedata, 0, 0);
+    
+        var image = new Image();
+        image.src = canvas.toDataURL();
+        return image;
     }
 }
 

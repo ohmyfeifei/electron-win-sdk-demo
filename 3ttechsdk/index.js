@@ -14,8 +14,8 @@ console.log("enableVideo res = ", res);
 res = tttechnode.setClientRole(1, "liyong");
 console.log("setClientRole res = ", res);
 
-res = tttechnode.setupLocalVideo(2, 0);
-console.log("setupLocalVideo res = ", res);
+//res = tttechnode.setupLocalVideo(2, 0);
+//console.log("setupLocalVideo res = ", res);
 
 res = tttechnode.startPreview();
 console.log("startPreview res = ", res);

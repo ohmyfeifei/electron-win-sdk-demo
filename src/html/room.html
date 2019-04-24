@@ -29,8 +29,13 @@
         border: 1px solid rgba(100, 100, 100, 0.8);
         padding: 5px;
         text-align: center;
-        width: 300px;
-        height: 300px;
+        width: 480px;
+        height: 480px;
+        -moz-transform: scale(-1, 1);
+        -webkit-transform: scale(-1, 1);
+        -o-transform: scale(-1, 1);
+        transform: scale(-1, 1);
+        filter: FlipH;
     }
 
     #page_close {
@@ -60,9 +65,10 @@
     <div class="grid-container"></div>
 
     <div class="grid-container-function" id="function">
+        <button class="grid-item-bt" id="getversion-bt">get version</button>
         <button class="grid-item-bt" id="mute_all_bt">不听别人</button>
         <button class="grid-item-bt" id="unmute_all_bt">听别人</button>
-        <button class="grid-item-bt" id="mute_all_bt">不听别人</button>
+        <button class="grid-item-bt" id="vmute_all_bt">不看别人</button>
         <button class="grid-item-bt" id="unvmute_all_bt">看别人</button>
         <button class="grid-item-bt" id="start_screen_share_bt">开始屏幕共享</button>
         <button class="grid-item-bt" id="stop_screen_share_bt">结束屏幕共享</button>
@@ -87,6 +93,23 @@
         <button class="grid-item-bt" id="getRecordingDefaultDevice_bt">取默认录音设备</button>
         <button class="grid-item-bt" id="startVideoDeviceTest_bt">开始视频设备测试</button>
         <button class="grid-item-bt" id="stopVideoDeviceTest_bt">停止视频测试测试</button>
+        <button class="grid-item-bt" id="leaveChannel_bt">leaveChannel_bt</button>
+        <select id="chanleprofile">
+            <option value="ROOM_MODE_COMMUNICATION_TTT">互动模式</option>
+            <option value="ROOM_MODE_LIVE_TTT">直播模式</option>
+            <option value="ROOM_MODE_GAME_FREE_TT">游戏自由模式</option>
+            <option value="ROOM_MODE_GAME_COMMAND_TTT">游戏指挥模式</option>
+            <option value="ROOM_MODE_CONFERENCE_TTT">会议模式</option>
+            <option value="ROOM_MODE_MANUAL_TTT">手动模式</option>
+            <option value="ROOM_MODE_UNFINE_TTT">未定义模式</option>
+        </select>
+        <button class="grid-item-bt" id="setChannelProfile_bt">setChannelProfile</button>
+        <select id="setClientRole">
+            <option value="CLIENT_ROLE_BROADCASTER_TTT">CLIENT_ROLE_AUDIENCE_TTT</option>
+            <option value="CLIENT_ROLE_ANCHOR_TTT">CLIENT_ROLE_ANCHOR_TTT</option>
+            <option value="CLIENT_ROLE_AUDIENCE_TTT">CLIENT_ROLE_ANCHOR_TTT</option>
+        </select>
+        <button class="grid-item-bt" id="setClientRole_bt">setClientRole</button>
     </div>
 
     <div id="div_info">
