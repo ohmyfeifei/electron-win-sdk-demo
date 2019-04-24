@@ -5,13 +5,13 @@ const {dialog} = require('electron');
 
 const path = require("path");
 // The 3techSDK addons path
-//const addon_path = path.join(__dirname, "../../3ttechsdk/build/Release/3TtechSDK");
+const addon_path = path.join(__dirname, "../../3ttechsdk/build/Release/3TtechSDK");
 // the make_stream in the SDKs folder.
 const make_stream = require('../../3ttechsdk/3tstream');
 // the tttechnode are 3tech addon
-//const tttechnode = require(addon_path);
+const tttechnode = require(addon_path);
 // The varible for received data from 3tech SDKs.
-//const tttdata = make_stream(tttechnode, { name: "Head Mounted Display" });
+const tttdata = make_stream(tttechnode, { name: "Head Mounted Display" });
 
 const videoDisplay = require('../../3ttechsdk/videoDisplay');
 const displayImage = new videoDisplay();
@@ -66,7 +66,7 @@ function joinRoom() {
     //let url = new URL(window.location.href);
     //const chanid = url.searchParams.get('chanid');
     const chanid = '1234567';
-/*
+
     // initilation windows SDKs (addon).
     initialize();
 
@@ -102,7 +102,6 @@ function joinRoom() {
     //let num = tttechnode.joinChannel("chID", chanid, 0);
     let num = tttechnode.joinChannel("", "999888666", 1234567);
     console.log("joidChannel num = ", num);
-*/
 }
 
 const test_info_area = $('#info');
